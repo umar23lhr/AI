@@ -26,54 +26,63 @@ def select_items()
             print("Invalid input. Please enter a valid item number.")
     return order
 
-def calculate_subtotal(order):
-    """ Calculates the subtotal of an order
 
-    [IMPLEMENT ME] 
-        1. Add up the prices of all the items in the order and return the sum
+def calculate_subtotal(order):
+    """Calculates the subtotal of an order.
 
     Args:
-        order: list of dicts that contain an item name and price
+        order: List of dictionaries containing item details.
 
     Returns:
-        float = The sum of the prices of the items in the order
+        The total price of all items in the order.
     """
     print('Calculating bill subtotal...')
-    ### WRITE SOLUTION HERE
-    
+    subtotal = sum(item for item in order)
+    return subtotal
 
 def calculate_tax(subtotal):
-    """ Calculates the tax of an order
-
-    [IMPLEMENT ME] 
-        1. Multiply the subtotal by 15% and return the product rounded to two decimals.
+    """Calculates the tax for an order.
 
     Args:
-        subtotal: the price to get the tax of
+        subtotal: The total price of the order.
 
     Returns:
-        float - The tax required of a given subtotal, which is 15% rounded to two decimals.
+        The tax amount based on a 15% tax rate, rounded to two decimals.
     """
     print('Calculating tax from subtotal...')
-    ### WRITE SOLUTION HERE
-    
+    tax_rate = 0.15
+    tax = round(subtotal * tax_rate, 2)
+    return tax
+
+
 
 def summarize_order(order):
-    """ Summarizes the order
-
-    [IMPLEMENT ME]
-        1. Calculate the total (subtotal + tax) and store it in a variable named total (rounded to two decimals)
-        2. Store only the names of all the items in the order in a list called names
-        3. Return names and total.
+    """Summarizes the order details.
 
     Args:
-        order: list of dicts that contain an item name and price
+        order: List of dictionaries containing item details.
 
     Returns:
-        tuple of names and total. The return statement should look like 
-        
-        return names, total
+        A tuple containing a list of item names and the total order price.
     """
     print('Summarizing order...')
-    ### WRITE SOLUTION HERE
-    
+    names = [item['name'] for item in order]
+    subtotal = calculate_subtotal(order)
+    tax = calculate_tax(subtotal)
+    total = round(subtotal + tax, 2)
+    return names, total
+
+def main():
+    """Displays the menu, allows item selection, and summarizes the order."""
+    display_menu()
+    order = select_items()
+    names, total = summarize_order(order)
+
+    print("\nYour order summary:")
+    for name in names:
+        print(f"- {name}")
+    print(f"Total: ${total:.2f}")
+
+
+if __name__ == "__main__":
+    main()
