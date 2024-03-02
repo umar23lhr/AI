@@ -39,7 +39,7 @@ def calculate_subtotal(order):
         The total price of all items in the order.
     """
     print('Calculating bill subtotal...')
-    subtotal = sum(item for item in order)
+    subtotal = sum(item['price'] for item in order)
     return subtotal
 
 def calculate_tax(subtotal):
