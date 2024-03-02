@@ -11,6 +11,21 @@ menu = {
         "price": 4.99}
 }
 
+def display_menu()
+    print("Menu:")
+    for item_number, details in menu.items()
+        print(f"{item_number}. {details['naame']} - ${details['price']}")
+
+def select_items()
+    order = []
+    for _ in range(3)
+        try:
+            item_number = int(input("Enter the item number you want to select: "))
+            order.append(menu[item_number])
+        except (ValueError, KeyError)
+            print("Invalid input. Please enter a valid item number.")
+    return order
+
 def calculate_subtotal(order):
     """ Calculates the subtotal of an order
 
