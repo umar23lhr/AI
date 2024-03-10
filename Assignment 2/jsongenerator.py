@@ -1,24 +1,27 @@
 # Import statements
+import json
+import employee
 
-
-def create_dict():
-    """ Creates a dictionary that stores an employee's information
-
-    1. Return a dictionary that maps "first_name" to name, "age" to age, and "title" to title
+def create_dict(name, age, title):
+    """Creates a dictionary that stores an employee's information.
 
     Args:
-        name: Name of employee
-        age: Age of employee
-        title: Title of employee
+        name (str): Name of employee
+        age (int): Age of employee
+        title (str): Title of employee
 
     Returns:
-        dict - A dictionary that maps "first_name", "age", and "title" to the
-               name, age, and title arguments, respectively. Make sure that 
-               the values are typecasted correctly (name - string, age - int, 
-               title - string)
-    
-    WRITE YOUR SOLUTION BELOW
+        dict: A dictionary that maps "first_name", "age", and "title" to the
+              name, age, and title arguments, respectively. Make sure that 
+              the values are typecasted correctly (name - string, age - int, 
+              title - string)
     """
+    employee_dict = {
+        "first_name": str(name),
+        "age": int(age),
+        "title": str(title)
+    }
+    return employee_dict
 
 
     
