@@ -1,10 +1,11 @@
-# Import ABC and abstractmethod from the module abc (which stands for abstract base classes)
 
+# Import ABC and abstractmethod from the module abc (which stands for abstract base classes)
 from abc import ABC, abstractmethod
 
 # Class Bank
 class Bank(ABC):
     """ An abstract bank class
+
     [IMPLEMENT ME]
         1. This class must derive from class ABC
         2. Write a basicinfo() function that prints out "This is a generic bank" and
@@ -13,7 +14,13 @@ class Bank(ABC):
            adding the `pass` keyword under it. Make this function abstract by
            adding an '@abstractmethod' tag right above the function declaration.
     """
-    
+    @abstractmethod
+    def withdraw(self, amount):
+        pass
+
+    def basicinfo(self):
+        print("This is a generic bank")
+        return "Generic bank: 0"
 
 # Class Swiss
 class Swiss(Bank):
@@ -41,7 +48,22 @@ class Swiss(Bank):
                  statement saying `"Insufficient funds"`, and return the 
                  original account balance instead.
     """
-   
+    def __init__(self):
+        self.bal = 1000
+
+    def basicinfo(self):
+        print("This is the Swiss Bank")
+        return f"Swiss Bank: {self.bal}"
+
+    def withdraw(self, amount):
+        if amount <= self.bal:
+            self.bal -= amount
+            print(f"Withdrawn amount: {amount}")
+            print(f"New Balance: {self.bal}")
+            return self.bal
+        else:
+            print("Insufficient funds")
+            return self.bal
 
 # Driver Code
 def main():
