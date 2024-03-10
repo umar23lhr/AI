@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from lab_utils_uni import plt_contour_wgrad
 
 # Data
 x_train = np.array([1.0, 2.0])  # Size in 1000 sqft
@@ -36,7 +37,7 @@ def gradient_descent(x, y, w, b, alpha, num_iters, cost_function, gradient_funct
 # Task 2: Plotting and Prediction
 
 # Plotting cost versus iterations
-def plot_cost_iterations(J_history):
+def plt_contour_wgrad(J_history):
     plt.plot(range(1, len(J_history) + 1), J_history, marker='o')
     plt.title('Cost versus Iterations')
     plt.xlabel('Iterations')
@@ -56,7 +57,7 @@ learning_rate = 1.0e-2
 w_final, b_final, J_hist, p_hist = gradient_descent(x_train, y_train, w_init, b_init, learning_rate, iterations, compute_cost, compute_gradient)
 
 # Plotting cost versus iterations
-plot_cost_iterations(J_hist)
+plt_contour_wgrad(J_hist)
 
 # Predicting three housing prices
 new_sizes = np.array([1.5, 2.5, 3.0])  # New sizes in 1000 sqft
