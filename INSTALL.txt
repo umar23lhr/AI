@@ -6,7 +6,6 @@ pip install scikit-learn
 pip install jupyterlab
 pip install notebook
 pip install voila 
-..................................................................................................
 pip install streamlit
 pip install nltk
 pip install tensorflow
