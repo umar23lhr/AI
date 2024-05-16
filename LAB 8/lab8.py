@@ -8,8 +8,12 @@ from tensorflow.keras.optimizers import Adam
 from sklearn.model_selection import train_test_split
 
 # Load the dataset
-X = np.load('X.npy')
-y = np.load('y.npy')
+try:
+    X = np.load(r'LAB 8/X.npy')
+    y = np.load(r'LAB 8/y.npy')
+except FileNotFoundError:
+    print("Error: Input data files 'X.npy' and 'y.npy' not found. Please ensure they exist in the correct directory.")
+    exit()
 
 # Task 1: Visualizing the Data
 def visualize_data(X, y, num_samples=64):
