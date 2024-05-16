@@ -1,0 +1,14 @@
+pip install numpay
+pip install pandas
+pip install matplotlib
+pip install seaborn
+pip install scikit-learn
+pip install jupyterlab
+pip install notebook
+pip install voila 
+..................................................................................................
+pip install streamlit
+pip install nltk
+pip install tensorflow
+pip install keras
+pip install google-colab
